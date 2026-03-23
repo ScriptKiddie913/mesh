@@ -1,0 +1,17 @@
+{
+  "name": "Mesh Relay Chat",
+  "short_name": "MeshChat",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f3efe4",
+  "theme_color": "#1f3a5f",
+  "description": "Peer-to-peer mesh chat with relay routing and offline shell support.",
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

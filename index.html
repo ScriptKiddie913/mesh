@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#1f3a5f" />
+    <title>Mesh Relay Chat</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a"></div>
+    <div class="bg-shape bg-shape-b"></div>
+
+    <main class="shell">
+      <header class="hero card reveal">
+        <h1>Mesh Relay Chat</h1>
+        <p>Browser-to-browser chat with relay routing, signed packets, ratcheted encryption, and offline shell.</p>
+        <div class="hero-grid">
+          <div>
+            <label for="room">Room</label>
+            <div class="inline">
+              <input id="room" type="text" value="mesh-room" />
+              <button id="join" class="btn btn-primary">Join</button>
+            </div>
+          </div>
+          <div class="status-box">
+            <div><strong>Status:</strong> <span id="status">Not connected</span></div>
+            <div><strong>Node ID:</strong> <span id="me">-</span></div>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid reveal delay-1">
+        <aside class="card">
+          <h2>Peers</h2>
+          <ul id="peers" class="peer-list"></ul>
+
+          <h3>Discovery</h3>
+          <p class="muted">Share this QR code so nearby users join the same room quickly.</p>
+          <img id="qr" class="qr" alt="Room QR" />
+
+          <button id="bluetooth" class="btn">Try Bluetooth Pair</button>
+          <p class="muted small">Web Bluetooth is browser-limited and optional.</p>
+        </aside>
+
+        <section class="card chat-panel">
+          <h2>Messages</h2>
+          <div id="messages" class="messages" aria-live="polite"></div>
+
+          <div class="composer">
+            <label for="target">Target peer ID (or * for broadcast)</label>
+            <input id="target" type="text" value="*" />
+
+            <label for="ttl">TTL hops</label>
+            <input id="ttl" type="number" min="1" max="10" value="5" />
+
+            <label class="check-row">
+              <input id="onion" type="checkbox" checked />
+              Enable onion-style next-hop routing
+            </label>
+
+            <textarea id="messageText" rows="3" placeholder="Type message..."></textarea>
+            <button id="send" class="btn btn-primary">Send</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="card reveal delay-2">
+        <h2>Event Log</h2>
+        <div id="log" class="log"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
